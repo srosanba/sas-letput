@@ -11,7 +11,17 @@ run;
 %letput(mymac);
 ```
 
-As you can see, the differences between `%put` and `%letput` are:
+Log excerpt:
+
+```
+169        %put mymac = [&mymac];
+mymac = [   my value   ]
+170        
+171        %letput(mymac);
+      mymac = [my value]
+```
+
+The benefits of `%letput` vs. `%put` are:
 
 1. You only have to type `mymac` once.
 1. You don't have to type the [brackets].
