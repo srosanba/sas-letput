@@ -13,13 +13,7 @@ run;
 
 Log excerpt:
 
-```
-169        %put mymac = [&mymac];
-mymac = [   my value   ]
-170        
-171        %letput(mymac);
-      mymac = [my value]
-```
+![letput log excerpt](https://github.com/srosanba/sas-letput/blob/master/letput.png)
 
 The benefits of `%letput` vs. `%put` are:
 
