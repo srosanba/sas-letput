@@ -58,7 +58,7 @@
       %*--- only attempt to left-justify non-AUTOMATIC ---;
       
       %if &issys = 0 %then 
-         %let &_mvar = %nrbquote(%sysfunc(strip(&&&_mvar));
+         %let &_mvar = %nrbquote(%sysfunc(strip(&&&_mvar)));
       
       %*--- write to log, indented and blue and bracketed ---;   
       
