@@ -13,7 +13,7 @@ run;
 
 Log excerpt:
 
-<kbd>![letput log excerpt](https://github.com/srosanba/sas-letput/blob/master/letput.png)</kbd>
+<kbd>![letput log excerpt](https://github.com/srosanba/sas-letput/blob/master/put_vs_letput.png)</kbd>
 
 The benefits of `%letput` vs. `%put` are:
 
