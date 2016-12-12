@@ -27,3 +27,5 @@ The benefits of `%letput` vs. `%put` are:
 1. You don't have to type the [brackets].
 1. The resulting macro variable value has been stripped (spaces removed from beginning and end).
 1. The value displayed in the log is indented and color coded.
+
+You can read more about the macro in the [SESUG paper](http://www.lexjansen.com/sesug/2015/121_Final_PDF.pdf).
