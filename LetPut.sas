@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------*
 
    *******************************************************
-   *** Copyright 2015, Rho, Inc.  All rights reserved. ***
+   *** Copyright 2017, Rho, Inc.  All rights reserved. ***
    *******************************************************
 
    MACRO:      %LetPut
@@ -31,6 +31,7 @@
    2015-07-16  Shane Rosanbalm   Original program. 
    2016-03-23  Shane Rosanbalm   Defend against macro variables beginning with SYS.   
    2016-12-12  Shane Rosanbalm   Defend against apostrophes in macro values.
+   2017-02-24  Shane Rosanbalm   Defend against missing values.
 
 *-----------------------------------------------------------------------------------*/
 
@@ -57,8 +58,12 @@
       
       %*--- only attempt to left-justify non-AUTOMATIC ---;
       
-      %if &issys = 0 %then 
-         %let &_mvar = %nrbquote(%sysfunc(strip(&&&_mvar)));
+      %if &issys = 0 %then %do;
+         %if %nrbquote(&&&mvar) ne %str() %then
+            %let &mvar = %nrbquote(%sysfunc(strip(&&&mvar)));
+         %else
+            %let &mvar = ;
+      %end;
       
       %*--- write to log, indented and blue and bracketed ---;   
       
