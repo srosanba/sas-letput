@@ -33,18 +33,27 @@
    2016-12-12  Shane Rosanbalm   Defend against apostrophes in macro values.
    2017-02-24  Shane Rosanbalm   Defend against empty variables.
    2017-02-27  Shane Rosanbalm   Change to data _null_ to avoid %nrbquote.
+                                 Make nomprint and nonotes statements conditional.
 
 *-----------------------------------------------------------------------------------*/
 
 %macro letput(_mvar);
 
-   %local options;
-   %let options = 
-      %sysfunc(getoption(notes))
-      %sysfunc(getoption(mprint))
+   %*--- turn off mprint ---;
+   %local op_mprint;
+   %let op_mprint = %sysfunc(getoption(mprint));
+   %if &op_mprint = MPRINT %then
+      options nomprint;
       ;
-   options nonotes nomprint;
+     
+   %*--- turn off notes ---;
+   %local op_notes;
+   %let op_notes = %sysfunc(getoption(notes));
+   %if &op_notes = NOTES %then
+      options nonotes;
+      ;
    
+   %*--- only move forward if macro variable exists ---;
    %if %symexist(&_mvar) eq 1 %then %do;
 
       %let issys = 0;
@@ -88,6 +97,6 @@
    %end;
    
    %*--- restore options ---;
-   options &options;
+   options &op_mprint &op_notes;
 
 %mend letput;
