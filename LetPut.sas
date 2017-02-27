@@ -80,7 +80,12 @@
       
    %end;
 
-   %else %put NOTE- Macro variable %upcase(&_mvar) does not exist.;
+   %else %do;
+   
+      options notes;
+      %put NOTE- Macro variable %upcase(&_mvar) does not exist.;
+      
+   %end;
    
    %*--- restore options ---;
    options &options;
