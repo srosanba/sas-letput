@@ -33,4 +33,4 @@ You can read more about the macro in the [SESUG paper](http://www.lexjansen.com/
 
 ## GOTCHA
 
-Of course, this being the SAS macro language, nothing is perfect. If your macro variable values have unmatched quotes in them you will get an error with `%letput`. To combat this `%nrbquote` was added to the macro. Unfortunately, this addition leaves macro quoting marks around the resulting macro variable value. This can be problematic when trying to subsequently concatenate the macro variable to form a dataset name. Do not use `%letput` on macro variables which will later become part of a dataset name concatenation (unless you want to have to first `%unquote` them).
+Of course, this being the SAS macro language, nothing is perfect. If your macro variable values have double quotes in them you will get an error with `%letput`. Many alternative approaches were explored, but each came with its own shortcoming. It was decided that double quotes was the least likely item to show up in a macro variable value. On the plus side, if you do have double quotes in your macro variable values, simply comment out `%letput` for that macro variable.
